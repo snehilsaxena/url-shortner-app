@@ -1,0 +1,40 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.home_inputContainer{
+    border: 1px solid black;
+    display: flex;
+    border-radius: 9999px;
+    box-shadow: 1px 1px 3px black;
+    margin-top: 15px;
+}
+
+.home_inputContainer > input{
+    width: 300px;
+    border: none;
+    margin-left: 20px;
+    outline: none;
+    font-size: 20px;
+    background: none;
+    color: white;
+}
+
+.home_checkboxContainer{
+    margin-left: -10px;
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+.home_checkboxContainer > span{
+    margin-top: -5px;
+}
+
+.home_center{
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}

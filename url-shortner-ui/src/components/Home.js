@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import './Home.css';
-import { Button, IconButton } from "@material-ui/core";
+import { IconButton } from "@material-ui/core";
 import { Send } from "@material-ui/icons";
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-import axios from "axios";
 import Checkbox from '@material-ui/core/Checkbox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import getShortenUrl from "../services/api-calls";
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -31,12 +29,12 @@ function Home() {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        // alert("Form Submitted");
-        axios.post('http://localhost:8080/api/url/shorten', { longUrl: url, customUrl: customUrl })
+        getShortenUrl(url, customUrl)
             .then((response) => {
                 console.log(response.data.shortUrl);
                 if (response.data.customUrl) {
-                    setMessage("Shortened url is : " + 'http://localhost:8080/'+response.data.customUrl);
+                    const shortenedCustomUrl = 'http://localhost:8080/' + response.data.customUrl
+                    setMessage("Shortened url is : " + shortenedCustomUrl);
                 } else {
                     setMessage("Shortened url is : " + response.data.shortUrl);
                 }
@@ -52,7 +50,7 @@ function Home() {
     }
 
     const handleCustom = () => {
-        if(custom){
+        if (custom) {
             setCustomUrl('');
         }
         setCustom(!custom);

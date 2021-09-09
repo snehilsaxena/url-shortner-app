@@ -17,3 +17,4 @@ ReactDOM.render(
 reportWebVitals();
 
 // git demo - change -> staged -> committed
+// git commands
